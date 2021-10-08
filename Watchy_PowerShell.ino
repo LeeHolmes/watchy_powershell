@@ -1,46 +1,9 @@
-#include <ctime>
+#include "Watchy_PowerShell.h"
 
-#include <Watchy.h>
-#include "gfxfont.h"
-#include "Watchy_Powershell.h"
-#include "px437_IBM_BIOS5pt7b.h"
+WatchyPowerShell watchy;
 
-class WatchyPowerShell : public Watchy {
-public:
-    void drawWatchFace() {
-        display.fillScreen(GxEPD_BLACK);
-        display.drawBitmap(0, 0, epd_bitmap_Watchy_PowerShell, 200, 200, GxEPD_WHITE);
-    
-        display.setTextColor(GxEPD_WHITE);
-        display.setFont(&Px437_IBM_BIOS5pt7b);
-        display.setCursor(0, 175);
-    
-        struct tm currentLocalTime;
-        currentLocalTime.tm_wday = currentTime.Wday - 1;
-        currentLocalTime.tm_year = currentTime.Year + 1970 - 1900;
-        currentLocalTime.tm_mon = currentTime.Month - 1;
-        currentLocalTime.tm_mday = currentTime.Day;
-        currentLocalTime.tm_hour = currentTime.Hour;
-        currentLocalTime.tm_min = currentTime.Minute;
-        currentLocalTime.tm_sec = currentTime.Second;
-    
-        char buffer[20];
-        strftime(buffer, sizeof(buffer), " %a %b %d, %Y", &currentLocalTime);
-        display.println(buffer);
-    
-        strftime(buffer, sizeof(buffer), " %I:%M %p", &currentLocalTime);
-        display.print(buffer);
-    }
-
-};
-
-
-WatchyPowerShell m; //instantiate your watchface
-
-void setup() {
-  m.init(); //call init in setup
+void setup(){
+  watchy.init();
 }
 
-void loop() {
-  // this should never run, Watchy deep sleeps after init();
-}
+void loop(){}

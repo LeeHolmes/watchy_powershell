@@ -1,6 +1,12 @@
 #ifndef POWERSHELL_H
 #define POWERSHELL_H
 
+class WatchyPowerShell : public Watchy {
+public:
+    WatchyPowerShell();
+    void drawWatchFace();
+};
+
 // 'Watchy-PowerShell', 200x200px
 const unsigned char epd_bitmap_Watchy_PowerShell[] PROGMEM = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
