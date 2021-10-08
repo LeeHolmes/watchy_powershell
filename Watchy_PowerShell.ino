@@ -16,7 +16,7 @@ public:
         display.setCursor(0, 175);
     
         struct tm currentLocalTime;
-        currentLocalTime.tm_wday = currentTime.Wday;
+        currentLocalTime.tm_wday = currentTime.Wday - 1;
         currentLocalTime.tm_year = currentTime.Year + 1970 - 1900;
         currentLocalTime.tm_mon = currentTime.Month;
         currentLocalTime.tm_mday = currentTime.Day;
